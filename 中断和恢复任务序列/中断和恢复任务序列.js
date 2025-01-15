@@ -6,23 +6,23 @@
  * @param  {...any} tasks 
  */
 function processTasks(...tasks) {
-    let isRuning = false;
+    let isRunning = false;
     const result = []; // 接收结果
     let i = 0; // 执行第几个
-    let prom = null;
+    let promise = null;
     return {
         start() {
             return new Promise(async (resolve, reject) => {
                 // 当完成后, 后续调用直接返回结果
-                if (prom) {
-                    prom.then(resolve, reject);
+                if (promise) {
+                    promise.then(resolve, reject);
                     return;
                 }
                 // 运行中点继续击执行是不生效的
-                if (isRuning) {
+                if (isRunning) {
                     return;
                 }
-                isRuning = true; // 标记运行中
+                isRunning = true; // 标记运行中
                 while (i < tasks.length) {
                     try {
                         console.log(i, '执行中');
@@ -30,26 +30,26 @@ function processTasks(...tasks) {
                         console.log(i, '执行完成');
                     } catch (e) {
                         // 报错执行完成
-                        isRuning = false;
-                        prom = Promise.reject(e);
+                        isRunning = false;
+                        promise = Promise.reject(e);
                         reject(e);
                         return;
                     }
                     i++;
-                    if (!isRuning && i < tasks.length - 1) { // 是否中断 & 不能最后一个
+                    if (!isRunning && i < tasks.length - 1) { // 是否中断 & 不能最后一个
                         console.log('执行被中断');
                         return;
                     }
                 }
 
                 // 成功
-                isRuning = false;
+                isRunning = false;
                 resolve(result);
-                prom = Promise.resolve(result);
+                promise = Promise.resolve(result);
             });
         },
         pause() {
-            isRuning = false;
+            isRunning = false;
         }
     }
 }

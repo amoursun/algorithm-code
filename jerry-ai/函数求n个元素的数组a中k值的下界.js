@@ -5,13 +5,20 @@
  * @param {number} k - the value to find the lower bound of
  * @returns {number} - the index of the lower bound of k in the array a
  */
-function lowerBound(a, n, k) {
-    let l = 0,
-        r = n - 1;
+/**
+ * 该函数求n个元素的数组a中k值的下界
+ * @param {Array<number>} arr - 数字数组
+ * @param {number} n - 数组中元素的数量
+ * @param {number} k - 查找下限的值
+ * @returns {number} - k 下界在数组 arr 中的索引
+ */
+function lowerBound(arr, n, k) {
+    let l = 0;
+    let r = n - 1;
     while (l + 1 < r) {
         let mid = l + r >> 1;
 
-        if (a[mid] <= k) {
+        if (arr[mid] <= k) {
             l = mid;
         } else {
             r = mid;
