@@ -45,20 +45,26 @@ const arrayToTree = (list = []) => {
     for (const item of list) {
         const {id, pid} = item;
 
-        if (!map[id]) {
-            map[id] = {children: []};
-        }
+        // if (!map[id]) {
+        //     map[id] = {children: []};
+        // }
+
+        // map[id] = {
+        //     ...item,
+        //     children: map[id].children,
+        // }
+
+        // const currentItem = map[id];
 
         map[id] = {
             ...item,
-            children: map[id].children,
-        }
-
-        const currentItem = map[id];
+            children: []
+        };
 
         // 是否第一层
         if (pid === 0) {
-            result.push(currentItem);
+            // result.push(currentItem);
+            result.push(map[id]);
         }
         // 非第一层, 需要children 里添加
         else {

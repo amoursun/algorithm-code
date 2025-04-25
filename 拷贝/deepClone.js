@@ -27,6 +27,8 @@ const clone1 = (source, hash = new WeakMap()) => {
     hash.set(source, target);
 
     for (let key in source) {
+        // 判断是否是自身属性
+        // if (source.hasOwnProperty(key)) {
         if (Object.prototype.hasOwnProperty.call(source, key)) {
             target[key] = isObject(source[key]) ? clone1(source[key], hash) : source[key];
         }
