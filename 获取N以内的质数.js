@@ -1,7 +1,15 @@
 /**
  * 实现一个函数，接收一个正整数N，输出N以内所有质数
  */
+
+/**
+ * 暴力法
+ * @param {*} N 
+ */
 function findPrimes(N) {
+    /**
+     * 判断一个数是否为质数
+     */
     const isPrime = (num) => {
         if (num < 2) return false;
         for (let i = 2; i <= Math.sqrt(num); i++) {
@@ -24,7 +32,10 @@ console.log(findPrimes(100));
 console.log(findPrimes(500));
 
 
-function findPrimes2(N) {
+/**
+ * 埃拉托斯特尼筛法
+ */
+function sieveOfEratosthenes(N) {
     const result = new Array(N + 1).fill(true);
     result[0] = result[1] = false;
     // 默认除了0和1，其他都是质数
@@ -50,6 +61,6 @@ function findPrimes2(N) {
     return primes;
 }
 
-console.log(findPrimes2(10));
-console.log(findPrimes2(100));
-console.log(findPrimes2(500));
+console.log(sieveOfEratosthenes(10));
+console.log(sieveOfEratosthenes(100));
+console.log(sieveOfEratosthenes(500));
