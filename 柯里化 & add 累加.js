@@ -30,6 +30,7 @@ const curry_add_2 = (a) => {
 
 // Object.prototype.toString() 方法返回一个表示该对象的字符串，
 // 当对象被表示为文本值时或者当以期望字符串的方式引用对象时，该方法被自动调用
+// curry_add_2(1)(2) + 1 相当于 curry_add_2(1)(2).toString() + 1
 
 // 如何实现 curry_add(1)(2, 3)(4)...
 // 使用展开运算符
