@@ -189,38 +189,7 @@ class IntensitySegments {
         return JSON.stringify(result);
     }
 };
-export class IntensitySegments {
-    constructor() {
-        this.weightMap = new Map();
-        this.values = [Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER];
-    }
-    /**
-    *
-    */
-    add(from, to, amount) {
-        
-    }
-    /**
-    *
-    */
-    set(from, to, amount) {
-        // TODO: implement this
-    }
-    /**
-    *
-    */
-    toString() {
-        const result = [];
-        for (const value of this.values) {
-            result.push([key, this.weightMap.get(value)]);
-        }
-        const res = JSON.stringify(result);
-        console.log(res);
-        return res;
-    }
-}
-// Here is an example sequence:
-// (data stored as an array of start point and value for each segment.)
+
 const segments = new IntensitySegments();
 segments.toString(); // Should be "[]"
 segments.add(10, 30, 1);
@@ -240,3 +209,23 @@ segments2.add(10, 40, -1);
 segments2.toString(); // Should be "[[20,1],[30,0]]"
 segments2.add(10, 40, -1);
 segments2.toString(); // Should be "[[10,-1],[20,0],[30,-1],[40,0]]"
+
+const segments3 = new IntensitySegments();
+segments3.toString(); // Should be "[]"
+segments3.set(10, 30, 1);
+segments3.toString(); // Should be: "[[10,1],[30,0]]"
+segments3.set(20, 40, 1);
+segments3.toString(); // Should be: "[[10,1],[30,0]]"
+segments3.set(10, 40, -2);
+segments3.toString(); // Should be: "[[10,-2],[30,0]]"
+
+const segments4 = new IntensitySegments();
+segments4.toString(); // Should be "[]"
+segments4.set(10, 30, 1);
+segments4.toString(); // Should be "[[10,1],[30,0]]"
+segments4.set(20, 40, 1);
+segments4.toString(); // Should be "[[10,1],[30,0]]"
+segments4.set(10, 40, -1);
+segments4.toString(); // Should be "[[10,-1],[30,0]]"
+segments4.set(10, 40, -4);
+segments4.toString(); // Should be "[[10,-4],[30,0]]"

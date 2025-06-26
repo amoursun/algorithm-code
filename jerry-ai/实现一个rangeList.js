@@ -29,7 +29,7 @@ class RangeList {
     get length() {
         return this.list.length;
     }
-    _valitateRange(range, name) {
+    _validateRange(range, name) {
         const isEfficient = isCheckRangeEfficient(range);
         if (!isEfficient) {
             errorRange(name);
@@ -38,7 +38,7 @@ class RangeList {
     }
 
     add(range) {
-        if (!this._valitateRange(range, 'add(range)方法')) {
+        if (!this._validateRange(range, 'add(range)方法')) {
             return;
         }
         if (this.length === 0) {
@@ -75,7 +75,7 @@ class RangeList {
     }
 
     remove(range) {
-        if (!this._valitateRange(range, 'remove(range)方法')) {
+        if (!this._validateRange(range, 'remove(range)方法')) {
             return;
         }
         if (this.length === 0) {
