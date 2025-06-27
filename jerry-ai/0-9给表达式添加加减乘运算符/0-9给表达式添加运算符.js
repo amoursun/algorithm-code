@@ -55,7 +55,7 @@ const addOperators = function(nums, target) {
                 // res => 6 - 3 + 3 * 4
                 // prev => 3 * 4
                 const x = prev * num;
-                run(arr, i + 1, res - prev + x, num * prev);
+                run(arr, i + 1, res - prev + x, x);
                 path.pop();
             }
             else {
@@ -67,4 +67,14 @@ const addOperators = function(nums, target) {
     }
 };
 
-console.log(addOperators('123456789', 100));
+function consoleResult(solutions, target) {
+    console.log(`所有能够得到目标结果为 ${target}一共有 ${solutions.length} 种解法:`);
+    solutions.forEach(solution => {
+        console.log(`${solution} = ${eval(solution)}`);
+    });
+}
+
+// 测试用例
+consoleResult(addOperators('123456789', 100), 100);
+consoleResult(addOperators('123456789', 200), 200);
+consoleResult(addOperators('123456789', 1000), 1000);
