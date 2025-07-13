@@ -1,4 +1,4 @@
-// 给定一个包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。 有效字符串需满足：
+// 有效括号: 给定一个包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。 有效字符串需满足：
 // 左括号必须用相同类型的右括号闭合。
 // 左括号必须以正确的顺序闭合。
 
@@ -40,6 +40,7 @@ function isValid(s) {
     if (!s) {
         return true;
     }
+    // ^在正则表达式中表示取反，即匹配除了括号以外的字符
     const sl = s.replace(/[^\(\)\{\}\[\]]/g, '');
     const map = {
         '(': ')',
@@ -64,7 +65,7 @@ function isValid(s) {
     }
     return !stack.length;
 };
-console.log(isValid('aa{bb[cc(dd)ee]ff}gg'));
-console.log(isValid('()[]{}'));
-console.log(isValid('([)]'));
-console.log(isValid('([)'));
+console.log(isValid('aa{bb[cc(dd)ee]ff}gg')); // true
+console.log(isValid('()[]{}')); // true
+console.log(isValid('([)]')); // false
+console.log(isValid('([)')); // false
