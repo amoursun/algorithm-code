@@ -19,7 +19,7 @@ Promise.prototype.all = function (promises = []) {
     return new Promise((resolve, reject) => {
         for (let i = 0; i < len; i++) {
 
-            Promise.resolve(promise[i]).then(res => {
+            Promise.resolve(promises[i]).then(res => {
                 count++;
                 result[i] = res;
 
