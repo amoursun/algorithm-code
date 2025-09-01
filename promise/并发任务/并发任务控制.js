@@ -74,3 +74,40 @@ addTask(6, '6'); // 18s后输出, 任务5执行
 // 5: 15.000s
 // 任务6执行
 // 6: 18.070s
+
+
+
+/**
+ * 并发任务控制
+ * 实现 ConcurrentTask
+ */
+class ConcurrentTask {
+    constructor() {
+
+    }
+    add() {
+
+    }
+}
+
+const concurrentTask = new ConcurrentTask();
+function timeout(time) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve();
+        }, time * 1000);
+    });
+}
+function addTask(time, name) {
+    concurrentTask
+        .add(() => timeout(time))
+        .then(() => {
+            console.log(`任务${name}执行`);
+        });
+}
+addTask(10, '1'); // 10s后输出, 任务1执行
+addTask(5, '2');  // 5s后输出, 任务2执行
+addTask(3, '3');  // 8s后输出, 任务3执行
+addTask(4, '4');  // 12s后输出, 任务4执行
+addTask(5, '5');  // 15s后输出, 任务5执行
+addTask(6, '6');  // 18s后输出, 任务5执行

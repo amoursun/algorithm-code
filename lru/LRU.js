@@ -34,6 +34,9 @@ class LRU {
     }
 }
 
+class LRU {
+    
+}
 const lru = new LRU(4)
 lru.put(2,2);  // 入 2，剩余容量3
 lru.put(3,3); // 入 3，剩余容量2
